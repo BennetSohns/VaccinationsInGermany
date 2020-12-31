@@ -6,8 +6,6 @@ from datetime import datetime, timedelta
 import requests
 import pandas as pd
 
-
-
 # Bot token received from @BotFather
 TOKEN = YOUR_BOT_TOKEN
 
@@ -40,23 +38,17 @@ def collectvaccine():
 
     sh_kum = int(SH[1])
     sh_dif = int(SH[2])
-
-
+    
     final_string = "*BRD gesamt:* {}\n*BRD∆:* {}\n*NDS gesamt:* {}\n*NDS∆:* {}\n*SH gesamt:* {}\n*SH∆:* {}".format(ges_kum,ges_dif,nds_kum,nds_dif,sh_kum,sh_dif)
     return final_string
-    
-    
-    
-        
+            
 #Main function to identify incoming traffic
 def handle(msg):
         content_type, chat_type, chat_id, = telepot.glance(msg)
         if content_type == "text":
             print(content_type, chat_type, chat_id,msg["text"])
             # Checks user input
-            if msg["text"] in ["/Giftspritzen_deployed"]:
-
-                # Sends fresh nikkei data
+            if msg["text"] in ["/getVaccinations"]:
                 bot.sendMessage(chat_id, collectvaccine(),parse_mode="markdown")
                 
 #creates the object bot and starts messageloop -> handle
