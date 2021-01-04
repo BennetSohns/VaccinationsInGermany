@@ -19,13 +19,8 @@ def collectvaccine():
     file = open("test.xlsx","wb")
     file.write(response.content)
     file.close()
-
-    date_time = datetime.now()
-    date_time = str(date_time)
-
-    date = "{}.{}.{}".format(int(date_time[8:10])-1,date_time[5:7],date_time[2:4])
     
-    df = pd.read_excel("test.xlsx", sheet_name=date)
+    df = pd.read_excel("test.xlsx", sheet_name=1)
     NDS = df.iloc[8]
     BRD = df.iloc[16]
     SH = df.iloc[14]
